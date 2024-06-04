@@ -13,3 +13,12 @@ after_success:
   - docker build -t aarish13111/multi-nginx ./nginx
   - docker build -t aarish13111/multi-srever ./server
   - docker build -t aarish13111/multi-worker ./worker
+
+  #login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" -- password-stdin
+
+  # push above images to docker
+  - docker push aarish13111/multi-client
+  - docker push aarish13111/multi-nginx
+  - docker push aarish13111/multi-srever
+  - docker push aarish13111/multi-worker
